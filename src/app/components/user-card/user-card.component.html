@@ -1,1 +1,11 @@
-<p>user-card works!</p>
+<div class="user-card">
+    <h2 class="user-card__account-number">Account: {{ user.account.number }}</h2>
+    <span class="user-card__name">{{ user.name }}</span>
+    <div class="user-card__account-container">
+        <div class="user-card__account-info">
+            <p class="user-card__account-info-limit"> Limit: {{ user.account.limit }}</p>
+            <p class="user-card__account-info-balance"> Balance: {{ user.account.balance }}</p>
+        </div>
+        <button class="user-card__details-btn">Details</button>
+    </div>
+</div>

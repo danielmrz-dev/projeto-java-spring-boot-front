@@ -1,0 +1,49 @@
+@use "../../../scss/variables" as v;
+
+.user-card {
+    background-color: v.$white;
+    padding: 1.375rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    border-radius: 10px;
+    &__account-number {
+        font-size: 15px;
+        font-weight: bold;
+    }
+    &__name {
+        grid-area: 1 / 2;
+        justify-self: end;
+        font-size: 13px;
+        color: v.$slate;
+    }
+    &__account-container {
+        grid-area: 2 / 1 / 3 / 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__account-info {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        &-limit {
+            font-size: 13px;
+            color: v.$slate;
+        }
+        &-balance {
+            font-size: 15px;
+            color: v.$eclipse;
+            font-weight: bold;
+        }
+    }
+    &__details-btn {
+        background-color: v.$green-opacity;
+        color: v.$green;
+        font-weight: bold;
+        font-size: 15px;
+        padding: .875rem;
+        border: none;
+        border-radius: 10px;
+    }
+}
