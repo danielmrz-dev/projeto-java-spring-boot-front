@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class UsersListComponent {
   users$: Observable<IUser[]> = of([]);
+  numberOfUsers: number = 0;
 
   constructor(private readonly usersService: UsersService) {}
 

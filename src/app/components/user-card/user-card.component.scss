@@ -27,12 +27,14 @@
         display: flex;
         flex-direction: column;
         gap: .5rem;
-        &-limit {
+        &-limit, &-balance {
             font-size: 13px;
             color: v.$slate;
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
         }
         &-balance {
-            font-size: 15px;
             color: v.$eclipse;
             font-weight: bold;
         }

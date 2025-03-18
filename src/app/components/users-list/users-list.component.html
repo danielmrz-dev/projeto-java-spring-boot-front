@@ -2,7 +2,8 @@
     <div class="users-list__header">
         <div class="users-list__header-text">
             <h2>Users</h2>
-            <p>7 users</p>
+            <p *ngIf="(users$ | async)!.length > 0"> {{ (users$ | async)?.length }} users </p>
+            <p *ngIf="(users$ | async)!.length === 0"> {{ (users$ | async)?.length }}</p>
         </div>
         <span class="users-list__filter">
             Filter
@@ -15,8 +16,11 @@
     </div>
 
     <div class="users-list__users-card">
-        <ng-container *ngFor="let user of users$ | async">
+        @for (user of users$ | async; track $index) {
             <app-user-card [user]="user"></app-user-card>
-        </ng-container>
+        } @empty {
+            <p>No users found</p>
+        }
+        
     </div>
 </section>
