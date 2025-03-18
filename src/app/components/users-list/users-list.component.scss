@@ -1,0 +1,39 @@
+@use "../../../scss/variables" as v;
+
+.users-list {
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    &__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        &-text {
+            display: flex;
+            flex-direction: column;
+            gap: .1875rem;
+        }
+    }
+    &__filter {
+        margin-left: auto;
+    }
+    &__add-new-user-btn {
+        background-color: v.$indigo;
+        display: flex;
+        align-items: center;
+        border-radius: 30px;
+        padding: 6px 12px 6px 6px;
+        gap: 0.5rem;
+        font-size: .9375rem;
+        font-weight: bold;
+        color: v.$white;
+        border: none;
+        img {
+            background-color: v.$white;
+            padding: 10px;
+            border-radius: 50%;
+        }
+    }
+}
