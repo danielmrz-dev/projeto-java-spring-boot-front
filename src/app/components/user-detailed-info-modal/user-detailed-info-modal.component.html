@@ -1,5 +1,8 @@
 <div class="user-details">
     <h2 mat-dialog-title class="user-details__title">User details</h2>
+    <button matDialogClose class="user-details__btn-close">
+        <img src="images/close-btn-icon.svg" alt="">
+    </button>
 
     <div class="user-details__info">
         <p class="user-details__info-data">Name: 
@@ -24,16 +27,15 @@
             <span>{{ data.card.limit | currency }}</span>
         </p>
         <p class="user-details__info-data">Features: 
-            <span>{{ data.features[0].description }}</span>
+            <span *ngFor="let feature of data.features">{{ feature.description }}</span>
         </p>
         <p class="user-details__info-data">News: 
-            <span>{{ data.news[0].description }}</span>
+            <span *ngFor="let news of data.news">{{ news.description }}</span>
         </p>
     </div>
     
     <mat-dialog-actions>
         <button class="user-details__action-btns" >Edit user</button>
         <button class="user-details__action-btns" >Delete user</button>
-        <button class="user-details__action-btns" matDialogClose>Close</button>
     </mat-dialog-actions>
 </div>

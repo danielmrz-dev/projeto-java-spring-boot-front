@@ -1,0 +1,56 @@
+@use "../../../scss/variables" as v;
+
+.go-back-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 2rem 1.5rem;
+    img {
+        transform: rotate(90deg);
+        position: relative;
+        top: -1px;
+    }
+}
+
+.form {
+    padding: 0 1.5rem;
+    &__title {
+        margin-bottom: 2rem;
+    }
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: .25rem;
+        position: relative;
+        label {
+            font-size: 16px;
+            line-height: 15px;
+            color: v.$steel;
+        }
+        input {
+            border: 1px solid v.$soft-blue;
+            border-radius: 4px;
+            padding: 1rem;
+            &:invalid {
+                border-color: v.$crimson;
+            }
+        }
+        &-error-msg {
+            padding: .15rem;
+            color: v.$crimson;
+            position: absolute;
+            bottom: -22px;
+            right: 2px;
+        }
+    }
+    &__fields-container {
+        display: grid;
+        // grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}

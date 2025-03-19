@@ -1,1 +1,31 @@
-<p>create-user-form works!</p>
+<button class="go-back-btn" routerLink="/users">
+    <img src="images/arrow.svg" alt="">
+    Go back
+</button>
+
+<form class="form" [formGroup]="createUserForm">
+
+    <h2 class="form__title">New User</h2>
+
+    <ng-template #formField let-field="field" let-fieldName="fieldName">
+        <div class="form__field">
+            <label [for]="field">{{ fieldName }}</label>
+            <input type="text" [id]="field" [formControlName]="field">
+            <span class="form__field-error-msg">Error message</span>
+        </div>
+    </ng-template>
+    
+    <div class="form__fields-container">
+        <ng-container 
+            *ngTemplateOutlet="formField; context: { field: 'name', fieldName: 'Name' }">
+        </ng-container>
+        <ng-container formGroupName="account">
+            <ng-container 
+                *ngTemplateOutlet="formField; context: { field: 'agency', fieldName: 'Agency' }">
+            </ng-container>
+        </ng-container>
+        
+    </div>
+    
+
+</form>

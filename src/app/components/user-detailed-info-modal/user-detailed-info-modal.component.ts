@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
-import { IUser } from '../../interfaces/user.interface';
 
 @Component({
   selector: 'app-user-detailed-info-modal',
