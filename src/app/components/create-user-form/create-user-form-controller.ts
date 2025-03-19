@@ -74,11 +74,19 @@ export class CreateUserFormController {
         return this.createUserForm.get("features") as FormArray;
     }
 
-    addFeature() {
-        this.features.push(this.createFeature())
+    get news(): FormArray {
+        return this.createUserForm.get("news") as FormArray;
     }
 
-    createFeature(): FormGroup {
+    addFeature() {
+        this.features.push(this.createFeatureOrNews())
+    }
+
+    addNews() {
+        this.news.push(this.createFeatureOrNews())
+    }
+
+    createFeatureOrNews(): FormGroup {
         return this._fb.group({
             icon: this._fb.control(""),
             description: this._fb.control("")
@@ -87,5 +95,9 @@ export class CreateUserFormController {
 
     removeFeature(index: number) {
         this.features.removeAt(index);
+    }
+
+    removeNews(index: number) {
+        this.news.removeAt(index);
     }
 }

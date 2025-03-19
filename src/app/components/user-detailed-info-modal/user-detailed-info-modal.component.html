@@ -35,7 +35,7 @@
     </div>
     
     <mat-dialog-actions>
-        <button class="user-details__action-btns" >Edit user</button>
-        <button class="user-details__action-btns" >Delete user</button>
+        <button class="user-details__action-btns" matDialogClose routerLink="/edit-user" >Edit user</button>
+        <button class="user-details__action-btns" matDialogClose (click)="deleteUser()">Delete user</button>
     </mat-dialog-actions>
 </div>

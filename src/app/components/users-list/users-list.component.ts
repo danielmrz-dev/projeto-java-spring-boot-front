@@ -20,6 +20,6 @@ export class UsersListComponent {
   constructor(private readonly usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.users$ = this.usersService.getUsers();
+    this.users$ = this.usersService.usersList$;
   }
 }

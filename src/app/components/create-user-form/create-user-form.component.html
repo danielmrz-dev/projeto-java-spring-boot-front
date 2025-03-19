@@ -3,7 +3,7 @@
     Go back
 </button>
 
-<form class="form" [formGroup]="createUserForm">
+<form class="form" [formGroup]="createUserForm" (ngSubmit)="createUser(createUserForm.value)">
 
     <h2 class="form__title">New User</h2>
 
@@ -55,7 +55,7 @@
         </ng-container>
 
         <ng-container formArrayName="features">
-            <h4>Card Features</h4>
+            <h4>Features</h4>
             <div 
                 class="form__field" 
                 *ngFor="let feature of features.controls; let i = index" [formGroupName]="i">
@@ -68,8 +68,25 @@
             </div>      
             <button (click)="addFeature()">Add feature</button>
         </ng-container>
+
+        <ng-container formArrayName="news">
+            <h4>News</h4>
+            <div 
+                class="form__field" 
+                *ngFor="let newsItem of news.controls; let j = index" [formGroupName]="j">
+            <label for="news-{{ j }}">
+                Description 
+                <span (click)="removeNews(j)">Remove News</span>
+            </label>
+                <input type="text" id="news-{{ j }}" formControlName="description">
+                <span class="form__field-error-msg">Error message</span>
+            </div>      
+            <button (click)="addNews()">Add news</button>
+        </ng-container>
         
         
     </div>
+
+    <button type="submit">Create user</button>
 
 </form>
