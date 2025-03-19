@@ -1,0 +1,38 @@
+@use "../../../scss/variables" as v;
+
+.user-details {
+    padding: 1.5rem .5rem;
+    display: grid;
+    gap: 1rem;
+    &__title {
+        text-align: center;
+    }
+    &__info {
+        display: grid;
+        gap: 0.15rem;
+        &-data {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.25rem 0.5rem;
+            margin: 0 0.5rem;
+            border-radius: 3px;
+            &:nth-child(odd) {
+                background-color: v.$soft-blue;
+            }
+        }
+    }
+    mat-dialog-actions {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 0 .5rem;
+    }
+    &__action-btns {
+        flex: 1 1 25%;
+        border: none;
+        background-color: v.$crimson;
+        padding: .5rem;
+        border-radius: 5px;
+    }
+}

@@ -1,5 +1,6 @@
 @use "./scss/reset";
 @use "./scss/variables" as v;
+@use "./scss/angular-material";
 
 body {
     background-color: v.$snow;

@@ -1,6 +1,39 @@
-<h2 mat-dialog-title>Hi {{ data.title }}</h2>
+<div class="user-details">
+    <h2 mat-dialog-title class="user-details__title">User details</h2>
 
-<mat-dialog-actions>
-    <button mat-button>No Thanks</button>
-    <button mat-button cdkFocusInitial>Ok</button>
-</mat-dialog-actions>
+    <div class="user-details__info">
+        <p class="user-details__info-data">Name: 
+            <span>{{ data.name }}</span>
+        </p>
+        <p class="user-details__info-data">Account number: 
+            <span>{{ data.account.number }}</span>
+        </p>
+        <p class="user-details__info-data">Account agency:
+            <span>{{ data.account.agency }}</span>
+        </p>
+        <p class="user-details__info-data">Balance: 
+            <span>{{ data.account.balance | currency }}</span>
+        </p>
+        <p class="user-details__info-data">Limit: 
+            <span>{{ data.account.limit | currency }}</span>
+        </p>
+        <p class="user-details__info-data">Card number: 
+            <span>{{ data.card.number }}</span>
+        </p>
+        <p class="user-details__info-data">Card limit: 
+            <span>{{ data.card.limit | currency }}</span>
+        </p>
+        <p class="user-details__info-data">Features: 
+            <span>{{ data.features[0].description }}</span>
+        </p>
+        <p class="user-details__info-data">News: 
+            <span>{{ data.news[0].description }}</span>
+        </p>
+    </div>
+    
+    <mat-dialog-actions>
+        <button class="user-details__action-btns" >Edit user</button>
+        <button class="user-details__action-btns" >Delete user</button>
+        <button class="user-details__action-btns" matDialogClose>Close</button>
+    </mat-dialog-actions>
+</div>

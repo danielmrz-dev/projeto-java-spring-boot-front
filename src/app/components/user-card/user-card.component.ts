@@ -20,9 +20,7 @@ export class UserCardComponent {
   showDetails() {
     this.dialog.open(UserDetailedInfoModalComponent, 
       {
-        data: {
-          title: "teste"
-        }
+        data: this.user
       }
     );
   }
