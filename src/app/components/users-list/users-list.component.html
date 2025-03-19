@@ -2,14 +2,13 @@
     <div class="users-list__header">
         <div class="users-list__header-text">
             <h2>Users</h2>
-            <p *ngIf="(users$ | async)!.length > 0"> {{ (users$ | async)?.length }} users </p>
-            <p *ngIf="(users$ | async)!.length === 0"> {{ (users$ | async)?.length }}</p>
+            <p *ngIf="(users$ | async)"> {{ (users$ | async)?.length }} users </p>
         </div>
         <span class="users-list__filter">
             Filter
             <img src="images/arrow.svg" alt="">
         </span>
-        <button class="users-list__add-new-user-btn">
+        <button class="users-list__add-new-user-btn" routerLink="/register-user">
             <img src="images/plus-icon.svg" alt="">
             New
         </button>

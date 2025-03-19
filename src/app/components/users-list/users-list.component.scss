@@ -30,6 +30,11 @@
         font-weight: bold;
         color: v.$white;
         border: none;
+        cursor: pointer;
+        transition: filter .3s ease;
+        &:hover {
+            filter: brightness(125%);
+        }
         img {
             background-color: v.$white;
             padding: 10px;

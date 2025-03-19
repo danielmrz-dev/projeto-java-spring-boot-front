@@ -4,11 +4,12 @@ import { IUser } from '../../interfaces/user.interface';
 import { UsersService } from '../../services/users.service';
 import { Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-users-list',
   standalone: true,
-  imports: [UserCardComponent, CommonModule],
+  imports: [UserCardComponent, CommonModule, RouterLink],
   templateUrl: './users-list.component.html',
   styleUrl: './users-list.component.scss'
 })
