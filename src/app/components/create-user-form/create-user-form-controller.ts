@@ -1,8 +1,8 @@
 import { inject } from "@angular/core";
-import { FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
 
 export class CreateUserFormController {
-    
+
     createUserForm!: FormGroup;
     private readonly _fb = inject(FormBuilder);
 
@@ -47,18 +47,45 @@ export class CreateUserFormController {
     }
 
     get accountId(): FormControl {
-        return this.createUserForm.get("account")?.get("id") as FormControl;
+        return this.createUserForm.get("account.id") as FormControl;
     }
 
     get accountNumber(): FormControl {
-        return this.createUserForm.get("account")?.get("number") as FormControl;
+        return this.createUserForm.get("account.number") as FormControl;
     }
 
-    get agency(): FormControl {
+    get accountAgency(): FormControl {
         return this.createUserForm.get("account.agency") as FormControl;
     }
 
-    get balance(): FormControl {
-        return this.createUserForm.get("account")?.get("balance") as FormControl;
+    get accountBalance(): FormControl {
+        return this.createUserForm.get("account.balance") as FormControl;
+    }
+
+    get accountLimit(): FormControl {
+        return this.createUserForm.get("account.limit") as FormControl;
+    }
+
+    get cardNumber(): FormControl {
+        return this.createUserForm.get("card.number") as FormControl;
+    }
+
+    get features(): FormArray {
+        return this.createUserForm.get("features") as FormArray;
+    }
+
+    addFeature() {
+        this.features.push(this.createFeature())
+    }
+
+    createFeature(): FormGroup {
+        return this._fb.group({
+            icon: this._fb.control(""),
+            description: this._fb.control("")
+        });
+    }
+
+    removeFeature(index: number) {
+        this.features.removeAt(index);
     }
 }

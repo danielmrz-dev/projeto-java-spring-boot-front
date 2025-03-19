@@ -7,25 +7,69 @@
 
     <h2 class="form__title">New User</h2>
 
-    <ng-template #formField let-field="field" let-fieldName="fieldName">
+    <div class="form__fields-container">
+
+        <h3>Account information</h3>
+
         <div class="form__field">
-            <label [for]="field">{{ fieldName }}</label>
-            <input type="text" [id]="field" [formControlName]="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name">
             <span class="form__field-error-msg">Error message</span>
         </div>
-    </ng-template>
-    
-    <div class="form__fields-container">
-        <ng-container 
-            *ngTemplateOutlet="formField; context: { field: 'name', fieldName: 'Name' }">
-        </ng-container>
         <ng-container formGroupName="account">
-            <ng-container 
-                *ngTemplateOutlet="formField; context: { field: 'agency', fieldName: 'Agency' }">
-            </ng-container>
+            <div class="form__field">
+                <label for="agency">Agency</label>
+                <input type="text" id="agency" formControlName="agency">
+                <span class="form__field-error-msg">Error message</span>
+            </div>
+            <div class="form__field">
+                <label for="number">Account Number</label>
+                <input type="text" id="number" formControlName="number">
+                <span class="form__field-error-msg">Error message</span>
+            </div>
+            <div class="form__field">
+                <label for="balance">Balance</label>
+                <input type="text" id="balance" formControlName="balance">
+                <span class="form__field-error-msg">Error message</span>
+            </div>
+            <div class="form__field">
+                <label for="limit">Limit</label>
+                <input type="text" id="limit" formControlName="limit">
+                <span class="form__field-error-msg">Error message</span>
+            </div>
+        </ng-container>
+
+        <h3>Card information</h3>
+
+        <ng-container formGroupName="card">
+            <div class="form__field">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" id="cardNumber" formControlName="number">
+                <span class="form__field-error-msg">Error message</span>
+            </div>
+            <div class="form__field">
+                <label for="cardLimit">Card Limit</label>
+                <input type="text" id="cardLimit" formControlName="limit">
+                <span class="form__field-error-msg">Error message</span>
+            </div>
+        </ng-container>
+
+        <ng-container formArrayName="features">
+            <h4>Card Features</h4>
+            <div 
+                class="form__field" 
+                *ngFor="let feature of features.controls; let i = index" [formGroupName]="i">
+            <label for="feature-{{ i }}">
+                Description 
+                <span (click)="removeFeature(i)">Remove Feature</span>
+            </label>
+                <input type="text" id="feature-{{ i }}" formControlName="description">
+                <span class="form__field-error-msg">Error message</span>
+            </div>      
+            <button (click)="addFeature()">Add feature</button>
         </ng-container>
         
+        
     </div>
-    
 
 </form>
