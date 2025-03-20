@@ -6,6 +6,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideHttpClient } from '@angular/common/http';
 import localePt from "@angular/common/locales/pt";
 import { registerLocaleData } from '@angular/common';
+import { provideEnvironmentNgxMask } from 'ngx-mask';
+
 
 registerLocaleData(localePt, "pt-BR");
 
@@ -15,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideAnimationsAsync(),
     provideHttpClient(),
+    provideEnvironmentNgxMask(),
     {
       provide: DEFAULT_CURRENCY_CODE, 
       useValue: 'BRL' 

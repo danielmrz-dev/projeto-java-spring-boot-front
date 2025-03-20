@@ -6,11 +6,14 @@ import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/user.interface';
 import { IUserEdited } from '../../interfaces/user-edited.interface';
+import { NgxMaskDirective } from 'ngx-mask';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-create-user-form',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule, CommonModule, NgTemplateOutlet],
+  imports: [RouterLink, ReactiveFormsModule, CommonModule, NgxMaskDirective],
   templateUrl: './create-user-form.component.html',
   styleUrl: './create-user-form.component.scss'
 })
@@ -23,7 +26,8 @@ export class CreateUserFormComponent extends CreateUserFormController {
   constructor(
     private readonly usersService: UsersService,
     private readonly router: Router,
-    private readonly activatedRoute: ActivatedRoute
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly dialog: MatDialog
   ) {
     super();
     this.activatedRoute.data.subscribe((value) => {
@@ -68,8 +72,16 @@ export class CreateUserFormComponent extends CreateUserFormController {
       },
 
     };
-    this.usersService.editUser(this.userId, userEdited);
     
+    this.dialog.open(ConfirmationModalComponent, {
+      data: {
+        text: 'User updated successfully!'
+      }
+    }).afterClosed().subscribe(() => {
+      this.router.navigate(['/users']);
+    })
+
+    this.usersService.editUser(this.userId, userEdited);
   }
   
 }

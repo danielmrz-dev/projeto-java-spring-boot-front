@@ -27,7 +27,7 @@
                     type="text" id="agency" formControlName="agency" 
                     [ngClass]="{ 
                         'error-state': accountAgency.touched && accountAgency.hasError('required')
-                    }">
+                    }" mask="0000">
                 <span class="form__field-error-msg" *ngIf="accountAgency.touched && accountAgency.hasError('required')">This field is required</span>
             </div>
 
@@ -36,7 +36,7 @@
                 <input type="text" id="number" formControlName="number"
                 [ngClass]="{ 
                     'error-state': accountNumber.touched && accountNumber.hasError('required')
-                }">
+                }" mask="000000-0">
                 <span class="form__field-error-msg" *ngIf="accountNumber.touched && accountNumber.hasError('required')">This field is required</span>
             </div>
 
@@ -45,7 +45,7 @@
                 <input type="text" id="balance" formControlName="balance"
                 [ngClass]="{ 
                     'error-state': accountBalance.touched && accountBalance.hasError('required')
-                }">
+                }" mask="separator.2" thousandSeparator="." prefix="R$ ">
                 <span class="form__field-error-msg" *ngIf="accountBalance.touched && accountBalance.hasError('required')">This field is required</span>
             </div>
 
@@ -54,7 +54,7 @@
                 <input type="text" id="limit" formControlName="limit"
                 [ngClass]="{ 
                     'error-state': accountLimit.touched && accountLimit.hasError('required')
-                }">
+                }" mask="separator.2" thousandSeparator="." prefix="R$ ">
                 <span class="form__field-error-msg" *ngIf="accountLimit.touched && accountLimit.hasError('required')">This field is required</span>
             </div>
 
@@ -68,7 +68,7 @@
                 <input type="text" id="cardNumber" formControlName="number"
                 [ngClass]="{ 
                     'error-state': cardNumber.touched && cardNumber.hasError('required')
-                }">
+                }" mask="0000 0000 0000 0000">
                 <span class="form__field-error-msg" *ngIf="cardNumber.touched && cardNumber.hasError('required')">This field is required</span>
             </div>
             <div class="form__field">
@@ -76,7 +76,7 @@
                 <input type="text" id="cardLimit" formControlName="limit"
                 [ngClass]="{ 
                     'error-state': cardLimit.touched && cardLimit.hasError('required')
-                }">
+                }" mask="separator.2" thousandSeparator="." prefix="R$ ">
                 <span class="form__field-error-msg" *ngIf="cardLimit.touched && cardLimit.hasError('required')">This field is required</span>
             </div>
         </ng-container>
@@ -117,6 +117,12 @@
     </div>
 
     <button type="submit" class="form__submit-btn" *ngIf="typeForm === 'register'" (click)="createUser(createUserForm.value)">Create user</button>
-    <button type="submit" class="form__confirm-changes-btn" *ngIf="typeForm === 'edit'" (click)="editUser(createUserForm.value)">Confirm changes</button>
+    <button 
+        type="submit" 
+        class="form__confirm-changes-btn" 
+        *ngIf="typeForm === 'edit'" 
+        (click)="editUser(createUserForm.value)"
+        [disabled]="name.untouched && accountLimit.untouched && cardLimit.untouched"
+        >Confirm changes</button>
 
 </form>

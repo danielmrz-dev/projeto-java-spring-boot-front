@@ -1,5 +1,5 @@
 <div class="user-card">
-    <h2 class="user-card__account-number">#{{ user.account.number }}</h2>
+    <h2 class="user-card__account-number">#{{ user.account.number | mask: '000000-0' }}</h2>
     <span class="user-card__name">{{ user.name }}</span>
     <div class="user-card__account-container">
         <div class="user-card__account-info">

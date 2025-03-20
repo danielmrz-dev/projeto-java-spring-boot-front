@@ -9,7 +9,7 @@
             <span>{{ data.name }}</span>
         </p>
         <p class="user-details__info-data">Account number: 
-            <span>{{ data.account.number }}</span>
+            <span>{{ data.account.number | mask: '000000-0' }}</span>
         </p>
         <p class="user-details__info-data">Account agency:
             <span>{{ data.account.agency }}</span>
@@ -21,7 +21,7 @@
             <span>{{ data.account.limit | currency }}</span>
         </p>
         <p class="user-details__info-data">Card number: 
-            <span>{{ data.card.number }}</span>
+            <span>{{ data.card.number | creditCardMask }}</span>
         </p>
         <p class="user-details__info-data">Card limit: 
             <span>{{ data.card.limit | currency }}</span>
