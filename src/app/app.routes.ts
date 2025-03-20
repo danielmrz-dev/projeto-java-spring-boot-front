@@ -13,10 +13,16 @@ export const routes: Routes = [
     },
     { 
         path: "register-user", 
-        loadComponent: () => import("./components/create-user-form/create-user-form.component").then(c => c.CreateUserFormComponent)
+        loadComponent: () => import("./components/create-user-form/create-user-form.component").then(c => c.CreateUserFormComponent),
+        data: {
+            typeForm: 'register'
+        }
     },
     { 
-        path: "edit-user", 
-        loadComponent: () => import("./components/create-user-form/create-user-form.component").then(c => c.CreateUserFormComponent)
+        path: "edit-user/:id", 
+        loadComponent: () => import("./components/create-user-form/create-user-form.component").then(c => c.CreateUserFormComponent),
+        data: {
+            typeForm: 'edit'
+        }
     },
 ];

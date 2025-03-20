@@ -27,15 +27,19 @@
             <span>{{ data.card.limit | currency }}</span>
         </p>
         <p class="user-details__info-data">Features: 
-            <span *ngFor="let feature of data.features">{{ feature.description }}</span>
+            <span >
+                {{ getFeaturesOrNews(data.features) }}
+            </span>
         </p>
         <p class="user-details__info-data">News: 
-            <span *ngFor="let news of data.news">{{ news.description }}</span>
+            <span>
+                {{ getFeaturesOrNews(data.news) }}
+            </span>
         </p>
     </div>
     
     <mat-dialog-actions>
-        <button class="user-details__action-btns" matDialogClose routerLink="/edit-user" >Edit user</button>
+        <button class="user-details__action-btns" matDialogClose (click)="navigateToEditUserPage()">Edit user</button>
         <button class="user-details__action-btns" matDialogClose (click)="deleteUser()">Delete user</button>
     </mat-dialog-actions>
 </div>

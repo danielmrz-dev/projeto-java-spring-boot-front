@@ -3,9 +3,9 @@
     Go back
 </button>
 
-<form class="form" [formGroup]="createUserForm" (ngSubmit)="createUser(createUserForm.value)">
+<form class="form" [formGroup]="createUserForm" >
 
-    <h2 class="form__title">New User</h2>
+    <h2 class="form__title">{{ typeForm === 'register' ? 'New user' : 'Edit user' }}</h2>
 
     <div class="form__fields-container">
 
@@ -17,17 +17,17 @@
             <span class="form__field-error-msg">Error message</span>
         </div>
         <ng-container formGroupName="account">
-            <div class="form__field">
+            <div class="form__field" *ngIf="typeForm === 'register'">
                 <label for="agency">Agency</label>
                 <input type="text" id="agency" formControlName="agency">
                 <span class="form__field-error-msg">Error message</span>
             </div>
-            <div class="form__field">
+            <div class="form__field" *ngIf="typeForm === 'register'"> 
                 <label for="number">Account Number</label>
                 <input type="text" id="number" formControlName="number">
                 <span class="form__field-error-msg">Error message</span>
             </div>
-            <div class="form__field">
+            <div class="form__field" *ngIf="typeForm === 'register'">
                 <label for="balance">Balance</label>
                 <input type="text" id="balance" formControlName="balance">
                 <span class="form__field-error-msg">Error message</span>
@@ -42,7 +42,7 @@
         <h3>Card information</h3>
 
         <ng-container formGroupName="card">
-            <div class="form__field">
+            <div class="form__field" *ngIf="typeForm === 'register'">
                 <label for="cardNumber">Card Number</label>
                 <input type="text" id="cardNumber" formControlName="number">
                 <span class="form__field-error-msg">Error message</span>
@@ -54,7 +54,7 @@
             </div>
         </ng-container>
 
-        <ng-container formArrayName="features">
+        <ng-container formArrayName="features" *ngIf="typeForm === 'register'">
             <h4>Features</h4>
             <div 
                 class="form__field" 
@@ -69,7 +69,7 @@
             <button (click)="addFeature()">Add feature</button>
         </ng-container>
 
-        <ng-container formArrayName="news">
+        <ng-container formArrayName="news" *ngIf="typeForm === 'register'">
             <h4>News</h4>
             <div 
                 class="form__field" 
@@ -87,6 +87,7 @@
         
     </div>
 
-    <button type="submit">Create user</button>
+    <button type="submit" *ngIf="typeForm === 'register'" (click)="createUser(createUserForm.value)">Create user</button>
+    <button type="submit" *ngIf="typeForm === 'edit'" (click)="editUser(createUserForm.value)">Confirm changes</button>
 
 </form>

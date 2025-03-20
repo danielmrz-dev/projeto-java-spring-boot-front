@@ -1,5 +1,6 @@
 import { inject } from "@angular/core";
 import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { IFeature, INews } from "../../interfaces/user.interface";
 
 export class CreateUserFormController {
 
