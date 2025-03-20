@@ -13,30 +13,51 @@
 
         <div class="form__field">
             <label for="name">Name</label>
-            <input type="text" id="name" formControlName="name">
-            <span class="form__field-error-msg">Error message</span>
+            <input 
+                type="text" id="name" formControlName="name" 
+                [ngClass]="{ 'error-state': name.touched && name.hasError('required') }">
+            <span class="form__field-error-msg" *ngIf="name.touched && name.hasError('required')">This field is required</span>
         </div>
+
         <ng-container formGroupName="account">
+
             <div class="form__field" *ngIf="typeForm === 'register'">
                 <label for="agency">Agency</label>
-                <input type="text" id="agency" formControlName="agency">
-                <span class="form__field-error-msg">Error message</span>
+                <input 
+                    type="text" id="agency" formControlName="agency" 
+                    [ngClass]="{ 
+                        'error-state': accountAgency.touched && accountAgency.hasError('required')
+                    }">
+                <span class="form__field-error-msg" *ngIf="accountAgency.touched && accountAgency.hasError('required')">This field is required</span>
             </div>
+
             <div class="form__field" *ngIf="typeForm === 'register'"> 
                 <label for="number">Account Number</label>
-                <input type="text" id="number" formControlName="number">
-                <span class="form__field-error-msg">Error message</span>
+                <input type="text" id="number" formControlName="number"
+                [ngClass]="{ 
+                    'error-state': accountNumber.touched && accountNumber.hasError('required')
+                }">
+                <span class="form__field-error-msg" *ngIf="accountNumber.touched && accountNumber.hasError('required')">This field is required</span>
             </div>
+
             <div class="form__field" *ngIf="typeForm === 'register'">
                 <label for="balance">Balance</label>
-                <input type="text" id="balance" formControlName="balance">
-                <span class="form__field-error-msg">Error message</span>
+                <input type="text" id="balance" formControlName="balance"
+                [ngClass]="{ 
+                    'error-state': accountBalance.touched && accountBalance.hasError('required')
+                }">
+                <span class="form__field-error-msg" *ngIf="accountBalance.touched && accountBalance.hasError('required')">This field is required</span>
             </div>
+
             <div class="form__field">
                 <label for="limit">Limit</label>
-                <input type="text" id="limit" formControlName="limit">
-                <span class="form__field-error-msg">Error message</span>
+                <input type="text" id="limit" formControlName="limit"
+                [ngClass]="{ 
+                    'error-state': accountLimit.touched && accountLimit.hasError('required')
+                }">
+                <span class="form__field-error-msg" *ngIf="accountLimit.touched && accountLimit.hasError('required')">This field is required</span>
             </div>
+
         </ng-container>
 
         <h3>Card information</h3>
@@ -44,13 +65,19 @@
         <ng-container formGroupName="card">
             <div class="form__field" *ngIf="typeForm === 'register'">
                 <label for="cardNumber">Card Number</label>
-                <input type="text" id="cardNumber" formControlName="number">
-                <span class="form__field-error-msg">Error message</span>
+                <input type="text" id="cardNumber" formControlName="number"
+                [ngClass]="{ 
+                    'error-state': cardNumber.touched && cardNumber.hasError('required')
+                }">
+                <span class="form__field-error-msg" *ngIf="cardNumber.touched && cardNumber.hasError('required')">This field is required</span>
             </div>
             <div class="form__field">
                 <label for="cardLimit">Card Limit</label>
-                <input type="text" id="cardLimit" formControlName="limit">
-                <span class="form__field-error-msg">Error message</span>
+                <input type="text" id="cardLimit" formControlName="limit"
+                [ngClass]="{ 
+                    'error-state': cardLimit.touched && cardLimit.hasError('required')
+                }">
+                <span class="form__field-error-msg" *ngIf="cardLimit.touched && cardLimit.hasError('required')">This field is required</span>
             </div>
         </ng-container>
 
@@ -61,10 +88,11 @@
                 *ngFor="let feature of features.controls; let i = index" [formGroupName]="i">
             <label for="feature-{{ i }}">
                 Description 
-                <span (click)="removeFeature(i)">Remove Feature</span>
+                <button (click)="removeFeature(i)" class="form__remove-feature-or-news-btn">
+                    <img src="images/close-btn-icon-red.svg" alt="">
+                </button>
             </label>
                 <input type="text" id="feature-{{ i }}" formControlName="description">
-                <span class="form__field-error-msg">Error message</span>
             </div>      
             <button (click)="addFeature()" class="form__add-feature-or-news-btn">Add new feature</button>
         </ng-container>
@@ -76,10 +104,11 @@
                 *ngFor="let newsItem of news.controls; let j = index" [formGroupName]="j">
             <label for="news-{{ j }}">
                 Description 
-                <span (click)="removeNews(j)">Remove News</span>
+                <button (click)="removeNews(j)" class="form__remove-feature-or-news-btn">
+                    <img src="images/close-btn-icon-red.svg" alt="">
+                </button>
             </label>
                 <input type="text" id="news-{{ j }}" formControlName="description">
-                <span class="form__field-error-msg">Error message</span>
             </div>      
             <button (click)="addNews()" class="form__add-feature-or-news-btn">Add news</button>
         </ng-container>
