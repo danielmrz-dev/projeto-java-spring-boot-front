@@ -1,5 +1,5 @@
 import { inject } from "@angular/core";
-import { FormArray, FormBuilder, FormControl, FormGroup } from "@angular/forms";
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { IFeature, INews } from "../../interfaces/user.interface";
 
 export class CreateUserFormController {
@@ -9,31 +9,31 @@ export class CreateUserFormController {
 
     constructor() {
         this.createUserForm = this._fb.group({
-            name: this._fb.control(""),
+            name: this._fb.control("", [Validators.required]),
             account: this._fb.group({
-                id: this._fb.control(""),
-                number: this._fb.control(""),
-                agency: this._fb.control(""),
-                balance: this._fb.control(""),
-                limit: this._fb.control(""),
+                id: this._fb.control("", [Validators.required]),
+                number: this._fb.control("", [Validators.required]),
+                agency: this._fb.control("", [Validators.required]),
+                balance: this._fb.control("", [Validators.required]),
+                limit: this._fb.control("", [Validators.required]),
             }),
             card: this._fb.group({
-                id: this._fb.control(""),
-                number: this._fb.control(""),
-                limit: this._fb.control(""),
+                // id: this._fb.control("", [Validators.required]),
+                number: this._fb.control("", [Validators.required]),
+                limit: this._fb.control("", [Validators.required]),
             }),
             features: this._fb.array([
                 this._fb.group({
-                    id: this._fb.control(""),
-                    icon: this._fb.control(""),
-                    description: this._fb.control(""),
+                    // id: this._fb.control("", [Validators.required]),
+                    icon: this._fb.control("", [Validators.required]),
+                    description: this._fb.control("", [Validators.required]),
                 })
             ]),
             news: this._fb.array([
                 this._fb.group({
-                    id: this._fb.control(""),
-                    icon: this._fb.control(""),
-                    description: this._fb.control(""),
+                    // id: this._fb.control("", [Validators.required]),
+                    icon: this._fb.control("", [Validators.required]),
+                    description: this._fb.control("", [Validators.required]),
                 })
             ]),
         })
@@ -89,8 +89,8 @@ export class CreateUserFormController {
 
     createFeatureOrNews(): FormGroup {
         return this._fb.group({
-            icon: this._fb.control(""),
-            description: this._fb.control("")
+            icon: this._fb.control("", [Validators.required]),
+            description: this._fb.control("", [Validators.required])
         });
     }
 

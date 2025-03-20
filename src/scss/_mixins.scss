@@ -1,0 +1,19 @@
+@use "./variables" as v;
+
+@mixin buttonStyle() {
+    background-color: v.$indigo;
+    display: flex;
+    align-items: center;
+    border-radius: 30px;
+    padding: 6px 12px 6px 6px;
+    gap: 0.5rem;
+    font-size: .9375rem;
+    font-weight: bold;
+    color: v.$white;
+    border: none;
+    cursor: pointer;
+    transition: filter .3s ease;
+    &:hover {
+        filter: brightness(125%);
+    }
+}

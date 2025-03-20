@@ -66,7 +66,7 @@
                 <input type="text" id="feature-{{ i }}" formControlName="description">
                 <span class="form__field-error-msg">Error message</span>
             </div>      
-            <button (click)="addFeature()">Add feature</button>
+            <button (click)="addFeature()" class="form__add-feature-or-news-btn">Add new feature</button>
         </ng-container>
 
         <ng-container formArrayName="news" *ngIf="typeForm === 'register'">
@@ -81,13 +81,13 @@
                 <input type="text" id="news-{{ j }}" formControlName="description">
                 <span class="form__field-error-msg">Error message</span>
             </div>      
-            <button (click)="addNews()">Add news</button>
+            <button (click)="addNews()" class="form__add-feature-or-news-btn">Add news</button>
         </ng-container>
         
         
     </div>
 
-    <button type="submit" *ngIf="typeForm === 'register'" (click)="createUser(createUserForm.value)">Create user</button>
-    <button type="submit" *ngIf="typeForm === 'edit'" (click)="editUser(createUserForm.value)">Confirm changes</button>
+    <button type="submit" class="form__submit-btn" *ngIf="typeForm === 'register'" (click)="createUser(createUserForm.value)">Create user</button>
+    <button type="submit" class="form__confirm-changes-btn" *ngIf="typeForm === 'edit'" (click)="editUser(createUserForm.value)">Confirm changes</button>
 
 </form>
