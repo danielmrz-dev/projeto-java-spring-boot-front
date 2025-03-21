@@ -55,3 +55,31 @@
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    .user-card {
+        padding: 1.875rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        &__account-number {
+            font-size: 18px;
+        }
+        &__name {
+            justify-self: center;
+            font-size: 15px;
+        }
+        &__account-container {
+            gap: 2.5rem;
+        }
+        &__account-info {
+            &-limit, &-balance {
+                font-size: 15px;
+            }
+        }
+        &__details-btn {
+            font-size: 18px;
+            padding: .875rem 1rem;
+        }
+    }
+}

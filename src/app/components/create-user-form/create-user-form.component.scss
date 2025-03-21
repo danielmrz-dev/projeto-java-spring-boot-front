@@ -87,3 +87,45 @@
         margin-top: 0.5rem;
     }
 }
+
+@media screen and (min-width: 768px) {
+    .go-back-btn {
+        gap: 1rem;
+        font-size: 1.25rem;
+        font-weight: bold;
+        padding: 48px;
+    }
+    .form {
+        max-width: 500px;
+        margin: auto;
+        &__title {
+            font-size: 2.25rem;
+        }
+        &__field {
+            gap: .5rem;
+            label {
+                font-size: 1.125rem;
+            }
+            input {
+                font-size: 1.125rem;
+                padding: 1.25rem;
+            }
+        }
+        &__fields-container {
+            gap: 1.75rem;
+        }
+        &__remove-feature-or-news-btn {
+            bottom: 17px;
+            right: 15px;
+            img {
+                width: 22px;
+            }
+        }
+        &__submit-btn, &__confirm-changes-btn {
+            padding: 1rem;
+        }
+        &__add-feature-or-news-btn {
+            padding: .75rem 1rem;
+        }
+    }
+}

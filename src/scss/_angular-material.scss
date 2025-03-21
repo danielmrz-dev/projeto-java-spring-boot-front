@@ -4,4 +4,7 @@
 
 .mat-mdc-dialog-inner-container.mdc-dialog__container {
     min-width: 350px;
+    @media screen and (min-width: 768px) {
+        min-width: 500px;
+    }
 }

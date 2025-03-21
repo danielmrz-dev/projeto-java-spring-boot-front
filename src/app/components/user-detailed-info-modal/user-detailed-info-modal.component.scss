@@ -57,3 +57,22 @@
         }
     }
 }
+
+@media screen and (min-width: 768px) {
+    .user-details {
+        padding: 1.5rem 1rem;
+        &__title {
+            font-size: 2rem;
+        }
+        &__info {
+            display: grid;
+            gap: 0.25rem;
+            &-data {
+                font-size: 1.25rem;
+            }
+        }
+        &__action-btns {
+            font-size: 20px;
+        }
+    }
+}

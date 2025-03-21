@@ -20,4 +20,9 @@
         opacity: .2;
         cursor: not-allowed;
     }
+    @media screen and (min-width: 768px) {
+        font-size: 1.25rem;
+        padding: 8px 14px 8px 8px;
+    }
 }
+
