@@ -15,8 +15,8 @@
             <label for="name">Name</label>
             <input 
                 type="text" id="name" formControlName="name" 
-                [ngClass]="{ 'error-state': name.touched && name.hasError('required') }">
-            <span class="form__field-error-msg" *ngIf="name.touched && name.hasError('required')">This field is required</span>
+                [ngClass]="{ 'error-state': name.touched && name.hasError('required') }" mask="S*" [validation]="false" [patterns]="customPatterns">
+            <span @errorMsg class="form__field-error-msg" *ngIf="name.touched && name.hasError('required')">This field is required</span>
         </div>
 
         <ng-container formGroupName="account">
@@ -26,18 +26,20 @@
                 <input 
                     type="text" id="agency" formControlName="agency" 
                     [ngClass]="{ 
-                        'error-state': accountAgency.touched && accountAgency.hasError('required')
+                        'error-state': accountAgency.touched && (accountAgency.hasError('required') || accountAgency.hasError('minlength'))
                     }" mask="0000">
-                <span class="form__field-error-msg" *ngIf="accountAgency.touched && accountAgency.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="accountAgency.touched && accountAgency.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="accountAgency.touched && !accountAgency.hasError('required') && accountAgency.hasError('minlength')">Must have 4 digits</span>
             </div>
 
             <div class="form__field" *ngIf="typeForm === 'register'"> 
                 <label for="number">Account Number</label>
                 <input type="text" id="number" formControlName="number"
                 [ngClass]="{ 
-                    'error-state': accountNumber.touched && accountNumber.hasError('required')
+                    'error-state': accountNumber.touched && (accountNumber.hasError('required') || accountNumber.hasError('minlength'))
                 }" mask="000000-0">
-                <span class="form__field-error-msg" *ngIf="accountNumber.touched && accountNumber.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="accountNumber.touched && accountNumber.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="accountNumber.touched && !accountNumber.hasError('required') && accountNumber.hasError('minlength')">Must have 7 digits</span>
             </div>
 
             <div class="form__field" *ngIf="typeForm === 'register'">
@@ -46,7 +48,7 @@
                 [ngClass]="{ 
                     'error-state': accountBalance.touched && accountBalance.hasError('required')
                 }" mask="separator.2" thousandSeparator="." prefix="R$ ">
-                <span class="form__field-error-msg" *ngIf="accountBalance.touched && accountBalance.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="accountBalance.touched && accountBalance.hasError('required')">This field is required</span>
             </div>
 
             <div class="form__field">
@@ -55,7 +57,7 @@
                 [ngClass]="{ 
                     'error-state': accountLimit.touched && accountLimit.hasError('required')
                 }" mask="separator.2" thousandSeparator="." prefix="R$ ">
-                <span class="form__field-error-msg" *ngIf="accountLimit.touched && accountLimit.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="accountLimit.touched && accountLimit.hasError('required')">This field is required</span>
             </div>
 
         </ng-container>
@@ -67,9 +69,10 @@
                 <label for="cardNumber">Card Number</label>
                 <input type="text" id="cardNumber" formControlName="number"
                 [ngClass]="{ 
-                    'error-state': cardNumber.touched && cardNumber.hasError('required')
+                    'error-state': cardNumber.touched && (cardNumber.hasError('required') || cardNumber.hasError('minlength'))
                 }" mask="0000 0000 0000 0000">
-                <span class="form__field-error-msg" *ngIf="cardNumber.touched && cardNumber.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="cardNumber.touched && cardNumber.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="cardNumber.touched && !cardNumber.hasError('required') && cardNumber.hasError('minlength') ">Must have 16 digts</span>
             </div>
             <div class="form__field">
                 <label for="cardLimit">Card Limit</label>
@@ -77,7 +80,7 @@
                 [ngClass]="{ 
                     'error-state': cardLimit.touched && cardLimit.hasError('required')
                 }" mask="separator.2" thousandSeparator="." prefix="R$ ">
-                <span class="form__field-error-msg" *ngIf="cardLimit.touched && cardLimit.hasError('required')">This field is required</span>
+                <span @errorMsg class="form__field-error-msg" *ngIf="cardLimit.touched && cardLimit.hasError('required')">This field is required</span>
             </div>
         </ng-container>
 
@@ -116,13 +119,22 @@
         
     </div>
 
-    <button type="submit" class="form__submit-btn" *ngIf="typeForm === 'register'" (click)="createUser(createUserForm.value)">Create user</button>
+    <button 
+        type="submit" 
+        class="form__submit-btn" 
+        *ngIf="typeForm === 'register'" 
+        (click)="createUser(createUserForm.value)"
+        [disabled]="createUserForm.invalid"
+        >
+        Create user
+    </button>
     <button 
         type="submit" 
         class="form__confirm-changes-btn" 
         *ngIf="typeForm === 'edit'" 
         (click)="editUser(createUserForm.value)"
         [disabled]="name.untouched && accountLimit.untouched && cardLimit.untouched"
-        >Confirm changes</button>
+        >Confirm changes
+    </button>
 
 </form>

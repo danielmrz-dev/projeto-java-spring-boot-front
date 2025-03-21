@@ -2,26 +2,29 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CreateUserFormController } from './create-user-form-controller';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CommonModule, NgTemplateOutlet } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { UsersService } from '../../services/users.service';
 import { IUser } from '../../interfaces/user.interface';
 import { IUserEdited } from '../../interfaces/user-edited.interface';
 import { NgxMaskDirective } from 'ngx-mask';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { errorMsgTrigger } from './animations';
 
 @Component({
   selector: 'app-create-user-form',
   standalone: true,
   imports: [RouterLink, ReactiveFormsModule, CommonModule, NgxMaskDirective],
   templateUrl: './create-user-form.component.html',
-  styleUrl: './create-user-form.component.scss'
+  styleUrl: './create-user-form.component.scss',
+  animations: [errorMsgTrigger]
 })
 export class CreateUserFormComponent extends CreateUserFormController {
 
   typeForm!: string;
   userData: IUser = {} as IUser;
   userId!: number;
+  customPatterns = { 'S': { pattern: new RegExp('[a-zA-ZÀ-ÿ ]') } }
 
   constructor(
     private readonly usersService: UsersService,
@@ -50,7 +53,6 @@ export class CreateUserFormComponent extends CreateUserFormController {
           limit: this.userData.card.limit
         }
       });
-      
     }
   }
   
@@ -73,6 +75,8 @@ export class CreateUserFormComponent extends CreateUserFormController {
 
     };
     
+    this.usersService.editUser(this.userId, userEdited);
+    
     this.dialog.open(ConfirmationModalComponent, {
       data: {
         text: 'User updated successfully!'
@@ -81,7 +85,6 @@ export class CreateUserFormComponent extends CreateUserFormController {
       this.router.navigate(['/users']);
     })
 
-    this.usersService.editUser(this.userId, userEdited);
   }
   
 }
