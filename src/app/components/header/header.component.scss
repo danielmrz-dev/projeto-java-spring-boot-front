@@ -35,5 +35,13 @@
         border-radius: 50%;
         border: 1px solid v.$soft-blue;
     }
+}
 
+@media screen and (min-width: 1024px) {
+    .header {
+        flex-direction: column;
+        position: fixed;
+        min-height: 100vh;
+        border-radius: 0 20px 20px 0;
+    }
 }

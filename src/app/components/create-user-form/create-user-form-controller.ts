@@ -21,14 +21,12 @@ export class CreateUserFormController {
             }),
             features: this._fb.array([
                 this._fb.group({
-                    id: this._fb.control(""),
                     icon: this._fb.control(""),
                     description: this._fb.control(""),
                 })
             ]),
             news: this._fb.array([
                 this._fb.group({
-                    id: this._fb.control(""),
                     icon: this._fb.control(""),
                     description: this._fb.control(""),
                 })
@@ -90,8 +88,8 @@ export class CreateUserFormController {
 
     createFeatureOrNews(): FormGroup {
         return this._fb.group({
-            icon: this._fb.control("", [Validators.required]),
-            description: this._fb.control("", [Validators.required])
+            icon: this._fb.control(""),
+            description: this._fb.control("")
         });
     }
 

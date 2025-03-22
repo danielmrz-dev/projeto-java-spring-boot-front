@@ -4,7 +4,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
 export const routes: Routes = [
     { 
         path: "", 
-        redirectTo: "/register-user",
+        redirectTo: "/users",
         pathMatch: 'full'
     },
     { 

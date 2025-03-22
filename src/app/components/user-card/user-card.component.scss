@@ -83,3 +83,29 @@
         }
     }
 }
+
+@media screen and (min-width: 1024px) {
+    .user-card {
+        justify-content: space-between;
+        &__account-number {
+            font-size: 1.25rem;
+            flex: 1 1;
+        }
+        &__name {
+            font-size: 1.25rem;
+            flex: 1 1;
+        }
+        &__account-container {
+            flex: 1 1;
+        }
+        &__account-info {
+            &-limit, &-balance {
+                font-size: 1.125rem;
+            }
+        }
+        &__details-btn {
+            margin-left: 2rem;
+            font-size: 20px;
+        }
+    }
+}

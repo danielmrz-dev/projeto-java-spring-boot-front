@@ -10,6 +10,7 @@ import { NgxMaskDirective } from 'ngx-mask';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { errorMsgTrigger } from './animations';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-user-form',
@@ -55,14 +56,24 @@ export class CreateUserFormComponent extends CreateUserFormController {
       });
     }
   }
-  
 
-  createUser(user: IUser) {
-    this.usersService.saveUser(user);
-    this.router.navigate(['/users']);
+  createUser(user: IUser): void {
+    this.usersService.saveUser(user).subscribe({
+      next: () => {
+        this.usersService.getUsers();
+        this.router.navigate(['/users']);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.dialog.open(ConfirmationModalComponent, {
+          data: {
+            text: error.error
+          }
+        })
+      }
+    });
   }
 
-  editUser(user: IUser) {
+  editUser(user: IUser): void {
     const userEdited: IUserEdited = {
       name: user.name,
       account: {

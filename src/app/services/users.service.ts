@@ -25,11 +25,15 @@ export class UsersService {
     
   }
 
-  saveUser(userData: IUser): void {
-    this._http.post<IUser>(this.api, userData).subscribe(() => {
-      this.getUsers();
-    });
+  saveUser(userData: IUser): Observable<IUser> {
+    return this._http.post<IUser>(this.api, userData);
   }
+
+  // saveUser(userData: IUser): void {
+  //   this._http.post<IUser>(this.api, userData).subscribe(() => {
+  //     this.getUsers();
+  //   });
+  // }
 
   editUser(id: Number, userData: IUserEdited): void {
     this._http.put<IUser>(`${this.api}/${id}`, userData).subscribe(() => {
