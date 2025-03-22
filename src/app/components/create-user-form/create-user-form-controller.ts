@@ -10,14 +10,12 @@ export class CreateUserFormController {
         this.createUserForm = this._fb.group({
             name: this._fb.control("", [Validators.required]),
             account: this._fb.group({
-                id: this._fb.control("", [Validators.required]),
                 number: this._fb.control("", [Validators.required, Validators.minLength(7)]),
                 agency: this._fb.control("", [Validators.required, Validators.minLength(4)]),
                 balance: this._fb.control("", [Validators.required]),
                 limit: this._fb.control("", [Validators.required]),
             }),
             card: this._fb.group({
-                id: this._fb.control("", [Validators.required]),
                 number: this._fb.control("", [Validators.required, Validators.minLength(16)]),
                 limit: this._fb.control("", [Validators.required]),
             }),

@@ -24,7 +24,6 @@ export class UserDetailedInfoModalComponent {
 
   deleteUser() {
     this.usersService.deleteUser(this.data.id);
-    
     this.dialog.open(ConfirmationModalComponent, {
       data: {
         text: 'User deleted successfully!'
@@ -37,7 +36,7 @@ export class UserDetailedInfoModalComponent {
   }
 
   getFeaturesOrNews(array: IFeature[]) {
-    return array.map(item => item.description).join(", ");
+    return array.map(item => item.description).join(", ") || 'None';
   }
   
   
