@@ -34,8 +34,8 @@ Os usuários desse projeto devem ser capazes de:
 
 ### Links
 
-- Repositório do back-end: [Link](https://projeto-java-spring-boot-front.vercel.app)
-- Link do deploy da aplicação: [Link](https://github.com/danielmrz-dev/projeto-java-springboot)
+- Repositório do back-end: [Link](https://github.com/danielmrz-dev/projeto-java-springboot)
+- Deploy da aplicação: [Link](https://projeto-java-spring-boot-front.vercel.app)
 
 ## Processo
 
