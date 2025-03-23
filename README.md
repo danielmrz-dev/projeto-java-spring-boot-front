@@ -25,7 +25,7 @@ Os usuários desse projeto devem ser capazes de:
 - Ver informações detalhadas de um usuário ao clicar no botão `Details`;
 - Receber mensagens de confirmação finalizar a criação, edição ou exclusão de um usuário;
 - Receber mensagens de erro ao preencher os campos do formulário de cadastro/edição incorretamente;
-- Receber uma mensagem de erro ao tentar cadastrar um usuário com um número de conta já cadastrao anteriormente;
+- Receber uma mensagem de erro ao tentar cadastrar um usuário com um número de conta já cadastrado anteriormente;
 - Acessar a aplicação em dispositivos móveis ou desktop (Completamente responsivo).
 
 ### Screenshot
